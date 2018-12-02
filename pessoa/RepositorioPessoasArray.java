@@ -6,25 +6,28 @@ public class RepositorioPessoasArray implements RepositorioPessoas {
 	private int indice;
 
 	public RepositorioPessoasArray() {
-		this.pessoas = new Pessoa[200];
+		this.pessoas = new Pessoa[50];
 		this.indice = 0;
 	}
+
 	// Corrigido
 	public void inserir(Pessoa pessoa) {
-		if (this.indice <= this.pessoas.length) {
 
+		if (indice < 50) {
 			this.pessoas[indice] = pessoa;
 			indice = indice + 1;
 		}
+
 	}
 
 	// Corrigido
 	public Pessoa procurar(String cpf) {
 		Pessoa p = null;
-
-		for (int i = 0; i < this.indice; i++) {
+		boolean find = false;
+		for (int i = 0; i < this.indice && !find; i++) {
 			if (this.pessoas[i].getCpf().equals(cpf)) {
-				p = pessoas[i];
+				p = this.pessoas[i];
+				find = true;
 			}
 		}
 		return p;
@@ -33,11 +36,11 @@ public class RepositorioPessoasArray implements RepositorioPessoas {
 	// Corrigido
 	public void remover(String cpf) {
 		boolean find = false;
-		for (int i = 0; i < this.indice; i++) {
-			if (pessoas[i].getCpf().equals(cpf)) {
-				indice = indice - 1;
-				this.pessoas[i] = this.pessoas[indice];
-				this.pessoas[i] = null;
+		for (int i = 0; i < this.indice && !find; i++) {
+			if (this.pessoas[i].getCpf().equals(cpf)) {
+				this.indice = this.indice - 1;
+				this.pessoas[i] = this.pessoas[this.indice];
+				this.pessoas[this.indice] = null;
 				find = true;
 			}
 		}

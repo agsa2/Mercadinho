@@ -5,9 +5,16 @@ public class Funcionario extends Pessoa {
 	private int id;
 	private String cargo;
 	private double salario;
-
-	public Funcionario(String cpf, String nome, String nascimento, String endereco, String telefone) {
-		super(cpf, nome, nascimento, endereco, telefone);
+	private String situacao;
+	
+	public Funcionario(String cpf, String nome, int diaNascimento, int mesNascimento, int anoNascimento, String endereco, 
+			String telefone, char genero, int id, String cargo, double salario, String situacao) {
+		super(cpf, nome, diaNascimento, mesNascimento, anoNascimento, endereco, telefone, genero);
+		
+		this.id = id;
+		this.salario = salario;
+		this.cargo = cargo;
+		this.situacao = situacao;
 
 	}
 
@@ -33,6 +40,14 @@ public class Funcionario extends Pessoa {
 
 	public void setSalario(double salario) {
 		this.salario = salario;
+	}
+	
+	public String getSituacao() {
+		return situacao;
+	}
+	
+	public void setSituacao(String situacao) {
+		this.situacao = situacao;
 	}
 
 }

@@ -4,16 +4,32 @@ public class Pessoa {
 
 	private String cpf;
 	private String nome;
-	private String nascimento;
+	
+	// private String dataNascimento; -> Forma "antiga" de receber a data de nascimento
+	
+	// Troquei a forma que recebe a data de nascimento pra ficar mais simples
+	// (pelo menos pra mim) na hora de validar. 
+	
+	private int diaNascimento;
+	private int mesNascimento;
+	private int anoNascimento;
+	
 	private String endereco;
 	private String telefone;
+	
+	// Último atributo colocado na classe PESSOA
+	// do tipo CHAR pois só vai receber "M" ou "F"
+	private char genero;
 
-	public Pessoa(String cpf, String nome, String nascimento, String endereco, String telefone) {
+	public Pessoa(String cpf, String nome, int diaNascimento, int mesNascimento, int anoNascimento, String endereco, String telefone, char genero) {
 		this.cpf = cpf;
 		this.nome = nome;
-		this.nascimento = nascimento;
+		this.diaNascimento = diaNascimento;
+		this.mesNascimento = mesNascimento;
+		this.anoNascimento = anoNascimento;
 		this.endereco = endereco;
 		this.telefone = telefone;
+		this.genero = genero;
 	}
 
 	public String getCpf() {
@@ -32,12 +48,28 @@ public class Pessoa {
 		this.nome = nome;
 	}
 
-	public String getNascimento() {
-		return nascimento;
+	public int getDiaNascimento() {
+		return diaNascimento;
 	}
 
-	public void setNascimento(String nascimento) {
-		this.nascimento = nascimento;
+	public void setDiaNascimento(int diaNascimento) {
+		this.diaNascimento = diaNascimento;
+	}
+	
+	public int getMesNascimento() {
+		return mesNascimento;
+	}
+	
+	public void setMesNascimento(int mesNascimento) {
+		this.mesNascimento = mesNascimento;
+	}
+	
+	public int getAnoNascimento() {
+		return anoNascimento;
+	}
+	
+	public void setAnoNascimento(int anoNascimento) {
+		this.anoNascimento = anoNascimento;
 	}
 
 	public String getEndereco() {
@@ -55,5 +87,12 @@ public class Pessoa {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-
+	
+	public char getGenero() {
+		return genero;
+	}
+	
+	public void setGenero(char genero) {
+		this.genero = genero;
+	}
 }

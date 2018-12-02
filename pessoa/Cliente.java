@@ -1,26 +1,45 @@
 package pessoa;
 
-public class Cliente extends Pessoa{
-	
-	public Cliente(String cpf, String nome, String nascimento, String endereco, String telefone) {
-		super(cpf, nome, nascimento, endereco, telefone);
-		
+import java.util.Date;
+
+public class Cliente extends Pessoa {
+
+	private String tipoPagamentoUsado;
+	private String produtoPreferido;
+	private String email;
+
+	public Cliente(String cpf, String nome, int diaNascimento, int mesNascimento, int anoNascimento, String endereco,
+			String telefone, char genero, String tipoPagamentoUsado, String produtoPreferido, String email) {
+		super(cpf, nome, diaNascimento, mesNascimento, anoNascimento, endereco, telefone, genero);
+
+		this.tipoPagamentoUsado = tipoPagamentoUsado;
+		this.produtoPreferido = produtoPreferido;
+		this.email = email;
+
 	}
-	private String tipoPagamento;
-	//private Produto produto;
-	
-	
-	public String getTipoPagamento() {
-		return tipoPagamento;
+
+	public String getTipoPagamentoUsado() {
+		return tipoPagamentoUsado;
 	}
-	public void setTipoPagamento(String tipoPagamento) {
-		this.tipoPagamento = tipoPagamento;
+
+	public void setTipoPagamentoUsado(String tipoPagamentoUsado) {
+		this.tipoPagamentoUsado = tipoPagamentoUsado;
 	}
-	/*public Produto getProduto() {
-		return produto;
+
+	public String getProdutoPreferido() {
+		return produtoPreferido;
 	}
-	public void setProduto(Produto produto) {
-		this.produto = produto;
-	}*/
-	
+
+	public void setProdutoPreferido(String produtoPreferido) {
+		this.produtoPreferido = produtoPreferido;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 }

@@ -1,5 +1,7 @@
 package pessoa;
 
+// Interface
+
 public interface RepositorioPessoas {
 
 	public void inserir(Pessoa pessoa);
