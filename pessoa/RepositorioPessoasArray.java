@@ -1,26 +1,30 @@
 package pessoa;
 
+// CLASSE COLEÇÃO DE DADOS 1
+
 public class RepositorioPessoasArray implements RepositorioPessoas {
 
 	private Pessoa[] pessoas;
 	private int indice;
-
+	
+	
+	// Inicia os atributos do Array
 	public RepositorioPessoasArray() {
 		this.pessoas = new Pessoa[50];
 		this.indice = 0;
 	}
 
-	// Corrigido
+	// Inserir PESSOA no Array "enquanto" o indice for menor que 50.
 	public void inserir(Pessoa pessoa) {
 
-		if (indice < 50) {
-			this.pessoas[indice] = pessoa;
-			indice = indice + 1;
+		if (this.indice < 50) {
+			this.pessoas[this.indice] = pessoa;
+			this.indice = this.indice + 1;
 		}
 
 	}
 
-	// Corrigido
+	// Procura pelo ATRIBUTO.
 	public Pessoa procurar(String cpf) {
 		Pessoa p = null;
 		boolean find = false;
@@ -33,7 +37,7 @@ public class RepositorioPessoasArray implements RepositorioPessoas {
 		return p;
 	}
 
-	// Corrigido
+	// Também REMOVE pelo ATRIBUTO
 	public void remover(String cpf) {
 		boolean find = false;
 		for (int i = 0; i < this.indice && !find; i++) {
@@ -47,9 +51,9 @@ public class RepositorioPessoasArray implements RepositorioPessoas {
 	}
 
 	// Corrigido
-	public void atualizar(Pessoa pessoa) throws PessoaNaoEncontradaException {
+	public void atualizar(Pessoa pessoa) {
 		boolean find = false;
-		for (int i = 0; i < indice; i++) {
+		for (int i = 0; i < this.indice; i++) {
 			if (this.pessoas[i].getCpf().equals(pessoa.getCpf())) {
 				this.pessoas[i] = pessoa;
 				find = true;
@@ -60,8 +64,8 @@ public class RepositorioPessoasArray implements RepositorioPessoas {
 
 	public boolean existir(String cpf) {
 		boolean find = false;
-		for (int i = 0; i < indice; i++) {
-			if (pessoas[i].getCpf().equals(cpf)) {
+		for (int i = 0; i < this.indice && !find; i++) {
+			if (this.pessoas[i].getCpf().equals(cpf)) {
 				find = true;
 			}
 		}

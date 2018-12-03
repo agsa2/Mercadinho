@@ -1,5 +1,7 @@
 package pessoa;
 
+//CLASSE COLEÇÃO DE DADOS 2
+
 public class RepositorioPessoasLista implements RepositorioPessoas {
 
 	private Pessoa pessoa;
@@ -13,6 +15,8 @@ public class RepositorioPessoasLista implements RepositorioPessoas {
 		return this.next;
 	}
 
+	// Aqui "starta" os atributos.
+	
 	public RepositorioPessoasLista() {
 		this.pessoa = null;
 		this.next = null;
@@ -28,7 +32,7 @@ public class RepositorioPessoasLista implements RepositorioPessoas {
 			this.next.inserir(pessoa);
 		}
 	}
-
+	// Método para procurar uma determinada pessoa pelo seu CPF
 	public Pessoa procurar(String cpf) {
 
 		Pessoa person;
@@ -42,7 +46,8 @@ public class RepositorioPessoasLista implements RepositorioPessoas {
 		return person;
 
 	}
-
+	
+	// Atualizar que recebe o OBJETO pessoa.
 	public void atualizar(Pessoa pessoa)  {
 		if(this.pessoa.getCpf().equals(pessoa.getCpf())) {
 			this.pessoa = pessoa;
@@ -51,7 +56,8 @@ public class RepositorioPessoasLista implements RepositorioPessoas {
 			this.next.atualizar(pessoa);
 		}
 	}
-
+	
+	// Remove uma pessoa pelo ATRIBUTO identificador.
 	public void remover(String cpf) {
 		if (this.pessoa.getCpf().equals(cpf)) {
 			this.pessoa = this.next.pessoa;
@@ -60,7 +66,10 @@ public class RepositorioPessoasLista implements RepositorioPessoas {
 			this.next.remover(cpf);
 		}
 	}
-
+	// Não sei se tá certo e esqueci de perguntar pra algum monitor... =( Mas...
+	
+	// Se o CPF da pessoa for igual ao CPF passado como parametro retorna true, caso não seja
+	// chama o próximo.
 	public boolean existir(String cpf) {
 		boolean find = false;
 		if (this.pessoa.getCpf().equals(cpf)) {

@@ -1,5 +1,7 @@
 package pessoa;
 
+
+// CLASSE BÁSICA
 public class Pessoa {
 
 	private String cpf;
@@ -19,8 +21,12 @@ public class Pessoa {
 	
 	// Último atributo colocado na classe PESSOA
 	// do tipo CHAR pois só vai receber "M" ou "F"
+	// embora na hora de IMPRIMIR eu editei pra Masculino e Feminino =)
+	
 	private char genero;
-
+	
+	
+	// Construtor
 	public Pessoa(String cpf, String nome, int diaNascimento, int mesNascimento, int anoNascimento, String endereco, String telefone, char genero) {
 		this.cpf = cpf;
 		this.nome = nome;
@@ -31,7 +37,9 @@ public class Pessoa {
 		this.telefone = telefone;
 		this.genero = genero;
 	}
-
+	
+	// Getters e Setters 
+	
 	public String getCpf() {
 		return cpf;
 	}

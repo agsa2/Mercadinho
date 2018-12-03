@@ -3,15 +3,23 @@ package pessoa;
 //COLEÇÃO DE NEGÓCIO
 
 public class CadastroPessoas {
-
+	
+	// Repositório de pessoa.
 	private RepositorioPessoas peopleRep;
 	
-	public CadastroPessoas(RepositorioPessoas peopleRep) {
+															// MÉTODO
+	public CadastroPessoas(RepositorioPessoas peopleRep) { // Aqui vai startar os atributos da classe *CadastroPessoa*
 		this.peopleRep = peopleRep;
 	}
 	
+	// Métodos CADASTRAR, ATUALIZAR, REMOVER E PROCURAR.
+	
 	public void cadastrar(Pessoa pessoa) throws PessoaJaCadastradaException, PessoaNaoEncontradaException, 
-		CPFInvalidoException, TelefoneInvalidoException, DataInvalidaException{
+		CPFInvalidoException, TelefoneInvalidoException, DataInvalidaException { // Aqui vai cadastrar uma pessoa no repositório
+																				 // Caso o CPF não exista ainda, primeiro vai verificar se:
+																				 // Os dados da *pessoa* está OK se tiver vai cadastrar, caso não
+																				 // lança uma exceção referente ao *Dado Errado* ou *Que a pessoa já 
+																				 // existe se os dados estiverem corretos.
 		
 		if (this.peopleRep.procurar(pessoa.getCpf()) == null) {
 			this.validar(pessoa);
@@ -49,7 +57,8 @@ public class CadastroPessoas {
 		}
 	}
 	
-	// Teste de validação baseado no exemplo código feito por Lucas Rufino
+	// Teste de validação baseado no exemplo código feito por Lucas Rufino.
+	// PS: O "Teste de validação" é a parte do CPF e do Telefone que eu usei o MÉTODO "matches"
 	
 	public void validar(Pessoa pessoa) throws CPFInvalidoException, TelefoneInvalidoException, 
 			DataInvalidaException{
@@ -67,18 +76,21 @@ public class CadastroPessoas {
 			
 		} else if (pessoa.getAnoNascimento() > 2018 || pessoa.getAnoNascimento() <= 0) {
 			throw new DataInvalidaException(pessoa.getAnoNascimento()); // Não é possível nascer um ano ou mais depois do ano atual. Não que eu saiba :3
-													 // Sim, é possível que alguém do ano 1 d.C se cadastre no sistema, mas é possível alterar depois	
+													 					// Sim, é possível que alguém do ano 1 d.C se cadastre no sistema, 
+																		// mas é possível alterar depois	
 			
-			// Considera apenas meses "reais", ou seja de Jan - Dez.
-		} else if (pessoa.getMesNascimento() < 1 || pessoa.getMesNascimento() > 12) { 
+			
+		} else if (pessoa.getMesNascimento() < 1 || pessoa.getMesNascimento() > 12) { // Considera apenas meses "reais", ou seja de Jan - Dez.
 			throw new DataInvalidaException(pessoa.getMesNascimento());
 		
 			
-			// Quando o ano for bissexto e a pessoa tiver nascido em FEV o dia só vai até 29. Caso não seja bissexto até dia 28 :) 
-		} else if (pessoa.getMesNascimento() == 2) {
+			
+		} else if (pessoa.getMesNascimento() == 2) { // Quando o ano for bissexto e a pessoa tiver nascido em FEV 
+													// o dia só vai até 29. Caso não seja bissexto até dia 28 :)
+			
 			if((pessoa.getAnoNascimento() % 4 == 0 && pessoa.getAnoNascimento() % 100 != 0) || (pessoa.getAnoNascimento() % 400 == 0)) {
 				if(pessoa.getDiaNascimento() > 29) {
-					throw new DataInvalidaException(pessoa.getDiaNascimento());
+					throw new DataInvalidaException(pessoa.getDiaNascimento());  
 				}
 			}else { // 
 				if (pessoa.getDiaNascimento() > 28) {
@@ -86,23 +98,22 @@ public class CadastroPessoas {
 				}
 			}
 			
-			// Considera os meses que têm só 30 dias
-		} else if ((pessoa.getMesNascimento() != 2) && (pessoa.getMesNascimento() == 4 || pessoa.getMesNascimento() == 6 
+		} else if ((pessoa.getMesNascimento() != 2) && (pessoa.getMesNascimento() == 4 || pessoa.getMesNascimento() == 6 // Considera os meses que têm só 30 dias
 				|| pessoa.getMesNascimento() == 9 || pessoa.getMesNascimento() == 11)) {
 			
 			if (pessoa.getDiaNascimento() > 30) {
 				throw new DataInvalidaException(pessoa.getDiaNascimento());
 			}
 		
-			// Considera meses que vão até 31 dias
+			
 		} else if ((pessoa.getMesNascimento() != 2) && (pessoa.getMesNascimento() == 1 || pessoa.getMesNascimento() == 3 
 				|| pessoa.getMesNascimento() == 5 || pessoa.getMesNascimento() == 7 || pessoa.getMesNascimento() == 8
-				|| pessoa.getMesNascimento() == 10 || pessoa.getMesNascimento() == 12)){
+				|| pessoa.getMesNascimento() == 10 || pessoa.getMesNascimento() == 12)){ // Considera meses que vão até 31 dias
 			
 			if (pessoa.getDiaNascimento() > 31) {
 				throw new DataInvalidaException(pessoa.getDiaNascimento());
 			}
-			// Fim da validação de DATA DE NASCIMENTO. Que negócio enorme... =( 
+			// Fim da validação de DATA DE NASCIMENTO. Que negócio enorme... =( Desculpa gente, quando eu pensei nisso achei que ia ser pequeno.
 		} 
 		
 	}

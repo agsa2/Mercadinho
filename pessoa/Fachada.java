@@ -1,11 +1,14 @@
 package pessoa;
 
+// CLASSE FACHADA.
+// Receberá 5 atributos "Cadastro".
+
 public class Fachada {
 
 	// Atributo de "Cadastro Pessoa"
 	private CadastroPessoas cadastroPessoa;
 
-	public Fachada(RepositorioPessoas repositorioPessoa) {
+	public Fachada(RepositorioPessoas repositorioPessoa) { // Vai iniciar a classe fachada.
 		this.cadastroPessoa = new CadastroPessoas(repositorioPessoa);
 	}
 
@@ -51,14 +54,15 @@ public class Fachada {
 				
 				
 			
-		if (pessoa instanceof Funcionario) {
+		if (pessoa instanceof Funcionario) { // O "instanceof" vai pegar o atributo *pessoa* e verificar se ele pertence a Classe "Funcionário"
+											// Caso seja *true* vai imprimir tudo que imprime com *Pessoa* + o que tá ai embaixo: *-*
 			
 			print = print + "Cargo: " +((Funcionario)pessoa).getCargo()
 					+ "\nSalário: R$ " + ((Funcionario)pessoa).getSalario()
 					+ "\nMatrícula do Funcionário: " + ((Funcionario)pessoa).getId() 
 					+ "\nSituação: " + ((Funcionario)pessoa).getSituacao() + "\n"; 
 		}
-		else if (pessoa instanceof Cliente) {
+		else if (pessoa instanceof Cliente) { // Ou nesse caso, a classe "Cliente"
 			print = print + "Tipo de Pagamento: " + ((Cliente)pessoa).getTipoPagamentoUsado() 
 					+ "\nTipo de Produto Preferido: " + ((Cliente)pessoa).getProdutoPreferido()
 					+ "\nEmail do Cliente: " + ((Cliente)pessoa).getEmail() + "\n";
